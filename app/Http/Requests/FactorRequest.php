@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
 
 class FactorRequest extends FormRequest
 {
@@ -23,9 +24,21 @@ class FactorRequest extends FormRequest
     {
         return [
             'order_id'=>['required'],
-            'total_pay'=>['required'],
+//            'total_pay'=>['required'],
             'title'=>['required'],
             'description'=>['required'],
         ];
+    }
+
+    protected function failedValidation(Validator|\Illuminate\Contracts\Validation\Validator $validator)
+    {
+        $errors = $validator->errors();
+
+        $response = response()->json([
+            'message' => 'Invalid data send',
+            'details' => $errors->messages(),
+        ], 422);
+
+        throw new HttpResponseException($response);
     }
 }

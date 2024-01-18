@@ -52,13 +52,20 @@
                     </div>
                 </div>
             </form>
+{{--            <div class="button-box">--}}
+{{--                <button type="submit">عضویت</button>--}}
+{{--                <a href="{{route('provider.login',['provider'=>'google'])}}" class="btn btn-primary">--}}
+{{--                <i class="sli sli-social-google"></i>--}}
+{{--                    ایجاد اکانت با گوگل--}}
+{{--                </a>--}}
+{{--            </div>--}}
 
             <div class="social-auth-links text-center mb-3">
                 <p>- یا -</p>
                 <a href="#" class="btn btn-block btn-primary">
                     <i class="fa-brands fa-facebook fa-lg"></i> ورود با اکانت فیسوبک
                 </a>
-                <a href="#" class="btn btn-block btn-danger">
+                <a href="{{route('provider.login',['provider'=>'google'])}}" class="btn btn-block btn-danger">
                     <i class="fa-brands fa-google"></i> ورود با اکانت گوگل
                 </a>
             </div>

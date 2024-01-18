@@ -29,6 +29,57 @@
 
         @include('.header.data.ordersData_header')
         <!-- Main content -->
+
+        <form role="form" method="get" action="{{ route('orders.filter') }}">
+            <div class="card">
+                <div class="card-header bg-light">
+                    <a class="btn btn-secondary" data-bs-toggle="collapse" href="#fillters">
+                        فیلتر ها
+                    </a>
+                </div>
+            </div>
+            <div class="collapse" id="fillters" data-bs-parent="#accordionHead">
+                <div class="card-body">
+                    <div class="form-control">
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <label for="filterTitle"> عنوان سفارش</label>
+                                        <input type="text" class="form-control"
+                                               id="filterTitle"
+                                               name="filterTitle"
+                                               placeholder="عنوان سفارش"
+                                               @if(isset($_GET['filterTitle']))
+                                                   value="{{$_GET['filterTitle']}}"
+                                            @endif>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="filterCostumer"> مشتری</label>
+                                        <input type="text" class="form-control"
+                                               id="filterCostumer"
+                                               name="filterCostumer"
+                                               placeholder="مشتری"
+                                               @if(isset($_GET['filterCostumer']))
+                                                   value="{{$_GET['filterCostumer']}}"
+                                            @endif>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-info">فیلتر</button>
+                        <a href="{{--{{ route('Users_data') }}--}}">
+                            <button type="button" class="btn btn-warning">حذف فیلتر ها</button>
+                        </a>
+                    </div>
+                            </div>
+                            </div>
+
+        </form>
+
+
+
         <section class="content">
             <div class="row">
                 <div class="col-12">
@@ -53,6 +104,7 @@
                                     </thead>
                                     <tbody>
                                     @php $temp = 0; @endphp
+                                    @if(!($orders->isEmpty()))
                                     @foreach ($orders as $order)
 
                                         <tr>
@@ -98,10 +150,10 @@
                                                     <button type="submit" onclick="return confirm('Are you sure?')">
                                                         <i class="fa-regular fa-trash-can"></i>
                                                     </button>
-                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
+                                    @endif
                                     </tbody>
                                     {{--<tfoot>
                                     <tr>

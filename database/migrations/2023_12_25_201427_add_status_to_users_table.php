@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
-            $table->text('explanations');
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('status',['confirmation','disapproval','Awaiting confirmation'])->default('confirmation');
+            $table->softDeletes();
         });
     }
 
@@ -21,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('orders', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             //
         });
     }

@@ -169,9 +169,8 @@
                                         <td>{{ $trash_factor->type }}</td>
                                         <td>{{ $trash_factor->description }}</td>
                                         <td>
-                                            <form class="" action="{{route('factors.recovery',$trash_factor->id)}}" method="post">
+                                            <form action="{{route('factors.recovery',['id' => $trash_factor->id])}}" method="post">
                                                 @csrf
-                                                @method('put')
                                                 <button type="submit">
                                                     <i class="fa-regular fa-pen-to-square fa-flip-horizontal"></i>
                                                 </button>

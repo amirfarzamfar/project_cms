@@ -46,7 +46,7 @@
                             <div class="alert alert-danger">{{$message}}</div>
                             @enderror
                         </div>
-                        <label for="user_id">کاربران</label>
+                        <label for="user_id">کاربر</label>
                         <select class="form-control" id="user_id" name="user_id">
                             @foreach($users as $user)
                                 <option value="{{$user->id}}">
@@ -76,6 +76,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th>نام محصول</th>
+                                                    <th>فروشنده</th>
                                                     <th>قیمت محصول</th>
                                                     <th>تعداد محصول</th>
                                                     <th>تعداد سفارش</th>
@@ -85,6 +86,7 @@
                                                 @foreach($products as $product)
                                                     <tr>
                                                         <td>{{$product->title}}</td>
+                                                        <td>{{$product->user->first_name.' '.$product->user->last_name}}</td>
                                                         <td>{{$product->price}}</td>
                                                         <td>{{$product->inventory}}</td>
                                                         <td>

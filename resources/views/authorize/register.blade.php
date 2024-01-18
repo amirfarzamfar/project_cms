@@ -17,7 +17,7 @@
     <div class="card">
         <div class="card-body register-card-body">
             <p class="login-box-msg">ثبت نام کاربر جدید</p>
-
+            @include('sections.errors')
             <form action="{{route('users.register')}}" method="post">
                 @csrf
                 <div class="input-group mb-3">
@@ -31,6 +31,13 @@
                     <div class="input-group-append">
                         <span class="fa fa-envelope input-group-text"></span>
                     </div>
+                </div>
+                <div class="input-group mb-3">
+                    <select class="form-control" name="role" id="role">
+                        <option value="" selected>نقش را وارد کنید</option>
+                        <option value="customer">خریدار</option>
+                        <option value="seller">فروشنده</option>
+                    </select>
                 </div>
                 <div class="input-group mb-3">
                     <input type="password" name="password" class="form-control" placeholder="رمز عبور">

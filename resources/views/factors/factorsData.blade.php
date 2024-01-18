@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -170,7 +170,6 @@
                                         <td>{{ $factor->description }}</td>
                                         <td>
                                             <form class="" action="{{route('factors.edit',$factor->id)}}" method="get">
-                                            <input type="hidden" name="id" value="{{--{{ $user->id }}--}}">
                                             <button type="submit">
                                                 <i class="fa-regular fa-pen-to-square fa-flip-horizontal"></i>
                                             </button>
